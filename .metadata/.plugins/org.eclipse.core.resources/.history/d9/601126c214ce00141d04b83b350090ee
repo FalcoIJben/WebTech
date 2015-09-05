@@ -1,0 +1,17 @@
+package nl.BuilTD.Model.Objects.Units;
+
+import android.graphics.Path;
+
+public class Boss extends Unit {
+
+	public Boss(boolean flying, int health, double speed, double armorValue, int baseValue,
+			Path path) {
+		super(flying, (int)(health*1.5), speed, armorValue, baseValue, path);
+		
+	}
+	public void destroyTower(Tower tower){
+		
+	}
+	
+
+}

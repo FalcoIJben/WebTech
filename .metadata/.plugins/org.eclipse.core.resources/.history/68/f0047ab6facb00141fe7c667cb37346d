@@ -1,0 +1,28 @@
+package nl.BuilTD.Model.Objects.Towers;
+
+import nl.saxion.act.schoolFrameWork.model.GameBoard;
+
+public class TowerFrost extends Tower {
+	private final String imageID = "Tower_Frost";
+
+	public TowerFrost(int damage, double fireRate, int price, double range) {
+		super(damage, fireRate, price, range);
+		
+	}
+
+	@Override
+	public String getImageId() {
+		int level = towerLvl;
+		if(level>4){
+			level = 5;
+		}
+		return imageID + level;
+	}
+
+	@Override
+	public void onTouched(GameBoard gameBoard) {
+		upgrade();
+		
+	}
+
+}

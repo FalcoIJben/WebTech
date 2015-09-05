@@ -1,0 +1,29 @@
+package nl.BuilTD.Model.Grid;
+
+import nl.saxion.act.schoolFrameWork.model.GameBoard;
+
+/**
+ * Created by jonathan on 11-3-15.
+ */
+public class Gridboard extends GameBoard {
+
+
+    private static final int GAMEBOARD_WIDTH =20;
+    private static final int GAMEBOARD_HEIGHT = 10;
+
+    /**
+     * Create a new game board.
+     */
+    public Gridboard() {
+        super(GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT);
+    }
+
+
+    @Override
+    public void onEmptyTileClicked(int x, int y) {
+
+
+
+
+    }
+}

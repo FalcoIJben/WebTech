@@ -1,0 +1,70 @@
+package nl.BuilTD.Controller.Wave;
+
+
+
+/**
+ * Created by jonathan on 6-3-15.
+ *Controllt de waves
+ *
+ *
+ */
+
+/*
+public class WaveController {
+
+    // niet mee eens dat een waveController gescheiden is van een wave. nader overleg.
+
+
+
+
+    // 1 wave? hoe haalt ie deze op? not sure
+   // private Wave wave;
+
+    // methoden
+
+    // rekend berekend de waarde van de units in de wave, als deze gemaakt wordt? algoritme, curve, luc heeft hier al een beetje over nagedacht.
+
+    protected void calculateValues(int waveNummer){
+        // TODO
+
+    }
+    // deze maakt de units in deze wave, volgens een algoritme
+    private void createUnits(){
+
+
+
+    }
+
+    // als een unit dood gaat, door toren
+    // unit gaat dood, score wordt berekend aan hand van tijd.
+    // unit wordt verwijderd uit deze wave
+    // score geupdated geld toegevoegd
+    // miss een idee als de waarde meegegeven wordt?
+    public void killUnit(UnitObject unit){
+
+
+    }
+
+    // als een unit de basis haalt.
+    // leven van de basis af.
+    // unit uit de lijst gehaald
+    public void unitAtBase(UnitObject unit){
+
+
+    }
+
+
+    public void removeUnit(UnitObject unitObject){
+
+
+
+       // for(UnitObject unit: )
+
+
+    }
+
+
+
+
+}
+*/

@@ -1,0 +1,24 @@
+package nl.saxion.act.opgave4;
+
+public class APL {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		AssessmentTree<Integer, String> tree = new AssessmentTree<Integer, String>();
+		tree.put(5, "OK");
+		tree.put(1, "OK");
+		tree.put(3, "OK");
+		
+		tree.put(7, "OK");
+		tree.put(9, "OK");
+		tree.put(11, "OK");
+		
+		System.out.println("weight = "+tree.weight());
+		
+		System.out.println("leaves = "+tree.nrOfLeaves());
+
+	}
+
+}

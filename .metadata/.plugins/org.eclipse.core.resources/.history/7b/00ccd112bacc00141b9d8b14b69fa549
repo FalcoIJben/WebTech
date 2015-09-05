@@ -1,0 +1,37 @@
+package nl.BuilTD.Model;
+
+import java.util.ArrayList;
+
+/**
+ * Created by jonathan on 5-3-15.
+ */
+public class Wave {}
+/*
+    protected int waveNumber;
+    protected int waveTimer;
+
+
+    // niet definitied, hoe samenstelling van units binnen deze waves?
+    ArrayList<UnitObject> unitObjects = new ArrayList<UnitObject>();
+
+    public ArrayList<UnitObject> getUnitObjects() {
+        return unitObjects;
+    }
+
+    //methodes
+
+    // calculateValues (waveNummer int ) void
+
+    // create Units
+
+    // Kill unit
+    // roep model , score, timer decrease
+
+    // removeUnit
+    // als basis bereikt
+
+
+
+
+}
+*/

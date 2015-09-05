@@ -1,0 +1,78 @@
+package nl.BuilTD.Model;
+
+import nl.BuilTD.Model.Grid.GridModel;
+import nl.BuilTD.Model.Grid.Gridboard;
+import nl.BuilTD.Model.Objects.Towers.Tower;
+import nl.saxion.act.schoolFrameWork.model.GameBoard;
+import nl.saxion.act.schoolFrameWork.model.GameObject;
+
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
+
+/**
+ * Created by jonathan on 11-3-15.
+ * bevat alle data, via hier communiceer je met alle modellen.
+ */
+public class GameData extends Observable{
+
+
+
+
+    public final int STARTING_GOLD = 10, MAX_LIVES = 10;
+    private int gold, score, timeTillNextWave, lives;
+
+    // reference to gridmodels
+    private GameBoard gridboard;
+    private int waveTimer = 0;
+    private int time = 0;
+
+    public void setWaveTimer(int waveTimer) {
+        this.waveTimer = waveTimer;
+        //setChanged();
+
+        notifyObservers();
+    }
+
+    // waves
+    private ArrayList<Wave> waves = new ArrayList<Wave>();
+
+
+
+
+    public GameData(GridModel gridModel) {
+        gold = STARTING_GOLD;
+        lives = MAX_LIVES;
+
+        gridboard = gridModel.getGameBoard();
+
+
+
+    }
+    public void updateTime(){
+    	time++;
+    	//setChanged();
+    	notifyObservers();
+    }
+
+
+    public int getWaveTimer() {
+        return waveTimer;
+    }
+
+    public GameBoard gridboard(){
+
+        return gridboard;
+
+
+    }
+
+
+
+
+
+
+
+}
+
+

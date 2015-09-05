@@ -1,0 +1,79 @@
+package nl.BuilTD.Model;
+
+import java.util.ArrayList;
+
+import nl.BuilTD.Model.Objects.Units.Unit;
+
+/**
+ * Created by jonathan on 5-3-15.
+ */
+public class Wave {
+
+    protected int waveNumber;
+    protected int waveTimer;
+    protected int healthPool;
+    static protected int amountOfMonsters = 10;
+    
+    //balance pool
+    protected final double BASEVALUE = 4.3296989006;
+    protected final double POWERVALUE = 0.1672224098;
+    
+    //end balancepool
+    
+    public Wave(int waveNumber){
+    	this.waveNumber = waveNumber;
+    	setHealthPool();
+    	
+    }
+
+
+    // niet definitied, hoe samenstelling van units binnen deze waves?
+    ArrayList<Unit> units = new ArrayList<Unit>();
+
+    public ArrayList<Unit> getUnitObjects() {
+        return units;
+    }
+
+    //methodes
+    
+    private int setHealthPool(){
+    	return (int) ((Math.pow(BASEVALUE, (POWERVALUE * waveNumber))) * 10 );
+    	
+    }
+    private void defineWave(){
+    	
+    	
+    }
+    public void removeUnit(Unit unit){
+    	// komt nog
+    	
+    }
+    // calculateValues (waveNummer int ) void
+
+    // create Units
+
+    // Kill unit
+    // roep model , score, timer decrease
+
+    // removeUnit
+    // als basis bereikt
+
+    // kijkt of wavenumber een prime number is 
+    //dit gebruiken we omdat bij iedere primewave er permanent 1 extra monster gespawned gaat worden.
+    
+    private boolean isFlying(){
+    	
+    }
+    private boolean isBoss(){
+    	if(waveNumber%10==0){return true;}
+    	return false;
+    }
+    private void isPrimeWaveNumber(){
+    	if (waveNumber%2==0) {return;}
+    		for (int i = 3 ; i * i <= waveNumber ; i += 2){
+    			if (waveNumber % i == 0) {return;}
+    		}
+    		amountOfMonsters++;
+    }
+
+}

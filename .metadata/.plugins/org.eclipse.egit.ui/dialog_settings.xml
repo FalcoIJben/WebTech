@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="2" key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel"/>
+	<item value="true" key="CommitDialog.showUntracked"/>
+	<item value="/home/falco/School/persistent/Project/RetroApptive/.git" key="GitSelectRepositoryPage.lastRepository"/>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://github.com/Rogiersax/workshop"/>
+		<item value="https://github.com/JonathanBergers/RetroApptive"/>
+		<item value="https://github.com/tbotting/RetroApptive"/>
+	</list>
+	<list key="CommitDialog.authorValues">
+		<item value="Falco &lt;Falcotjeijben@gmail.com&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="Falco &lt;Falcotjeijben@gmail.com&gt;"/>
+	</list>
+	<section name="org.eclipse.egit.ui.internal.push.PushResultDialog.dialogBounds">
+		<item value="690" key="DIALOG_WIDTH"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="411" key="DIALOG_HEIGHT"/>
+		<item value="600" key="DIALOG_X_ORIGIN"/>
+		<item value="239" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.pull.PullResultDialog.dialogBounds">
+		<item value="1068" key="DIALOG_WIDTH"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="381" key="DIALOG_HEIGHT"/>
+		<item value="400" key="DIALOG_X_ORIGIN"/>
+		<item value="260" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.merge.MergeResultDialog.dialogBounds">
+		<item value="705" key="DIALOG_WIDTH"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="270" key="DIALOG_HEIGHT"/>
+		<item value="581" key="DIALOG_X_ORIGIN"/>
+		<item value="355" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.fetch.FetchResultDialog.dialogBounds">
+		<item value="613" key="DIALOG_WIDTH"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="319" key="DIALOG_HEIGHT"/>
+		<item value="660" key="DIALOG_X_ORIGIN"/>
+		<item value="250" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="GitCommitMessageComponent">
+	</section>
+	<section name="GitCreatePatchWizard">
+	</section>
+</section>

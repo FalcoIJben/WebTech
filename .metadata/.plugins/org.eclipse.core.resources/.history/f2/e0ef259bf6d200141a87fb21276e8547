@@ -1,0 +1,107 @@
+package nl.BuilTD.Activities;
+
+import java.util.Timer;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import nl.BuilTD.Controller.Game.GameController;
+import nl.BuilTD.Controller.Tijdsysteem.TickTimer;
+import nl.BuilTD.Model.GameData;
+import nl.BuilTD.Model.Objects.Towers.TowerEarth;
+import nl.BuilTD.View.Game.AnimationBoard.AnimationBoardSurfaceView;
+import nl.BuilTD.View.Game.GridboardView;
+import nl.BuilTD.View.Game.InformatieBalk;
+import nl.saxion.act.playground.R;
+
+/**
+ * Created by jonathan on 11-3-15.
+ */
+public class MainActivity extends Activity {
+
+
+
+    private GameData gameData;
+    private TickTimer timer;
+
+    private GridboardView gridboardView;
+    private InformatieBalk informatieBalk;
+    private Button buttonPauseMenu, buttonNextWave;
+    private GameController gameController;
+
+    private AnimationBoardSurfaceView animationBoardSurfaceView;
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            // Load main.xml
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.game_screen);
+
+            // get the model
+            BuilTDApplication application = (BuilTDApplication) getApplicationContext();
+            gameData = application.getGameData();
+
+            // maak timer aan, en run hem
+            timer = new TickTimer(gameData);
+            timer.start();
+
+
+            // inflate views
+            informatieBalk = (InformatieBalk) findViewById(R.id.informatiebalk);
+            gridboardView = (GridboardView) findViewById(R.id.gridboardView);
+
+            gameData.addObserver(informatieBalk);
+
+            // make the gameboardView
+            gridboardView.setGameBoard(gameData.gridboard());
+            gridboardView.setFixedGridSize(gameData.gridboard().getWidth(), gameData.gridboard().getHeight());
+
+
+            //koppel buttons
+            buttonPauseMenu = (Button) informatieBalk.findViewById(R.id.buttonMenu);
+            buttonNextWave = (Button) informatieBalk.findViewById(R.id.buttonNextWave);
+
+            buttonNextWave.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    animationBoardSurfaceView.insaneWave();
+
+                }
+            });
+
+            // make the game controller
+            //gameController = new GameController(gameData);
+
+
+            //set Listeners voor buttons
+            buttonPauseMenu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intentPauseMenu = new Intent(MainActivity.this, MenuPauseActivity.class);
+                    startActivity(intentPauseMenu);
+                }
+            });
+
+
+
+
+
+
+
+
+            // open het "animatieboard"
+          animationBoardSurfaceView = (AnimationBoardSurfaceView) findViewById(R.id.animationBoard);
+
+            animationBoardSurfaceView.setZOrderOnTop(true);
+
+         // setContentView(animationBoardSurfaceView);
+
+
+
+
+        }
+
+}

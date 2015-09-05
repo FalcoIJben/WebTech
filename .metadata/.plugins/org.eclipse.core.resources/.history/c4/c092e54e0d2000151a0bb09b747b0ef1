@@ -1,0 +1,245 @@
+package nl.saxion.act.opgave4;
+
+/**
+ * Implements a tree similar to practical assignments
+ * Just for Examination purposes
+ * 
+ * @author Jan Stroet
+ *
+ * @param <K> the key
+ * @param <V> the associated value
+ */
+public class AssessmentTree<K, V> {
+	
+	private K key;
+	private V value;
+	private AssessmentTree<K,V> left, right;
+	
+	/**
+	 * Constructs AssessmentTree;
+	 * <br><STRONG>ensure</STRONG> Empty tree is created
+	 */
+	public AssessmentTree(){
+		
+		assert isEmpty(): " Tree not empty";
+	}
+	/**
+	 * checks whether tree is empty
+	 * @return true when tree contains no elements
+	 */
+	public boolean isEmpty(){
+		return key == null && value == null && 
+			   left == null && right == null;
+	}
+
+	/**
+	 * inserts key/value pair in the tree;
+	 * <br><STRONG>require</STRONG> key not in tree;
+	 * <br><STRONG>ensure</STRONG> key in tree;
+	 * @param newKey the key inserted
+	 * @param newValue the associated value inserted
+	 */
+	public void put (K newKey, V newValue){
+		assert !has(newKey) : "Key already exists";
+		
+		if (isEmpty()){
+			key = newKey;value = newValue;
+			left = new AssessmentTree<K,V>();
+			right = new AssessmentTree<K,V>();
+		} else if (left.isEmpty())
+			left.put(newKey, newValue);			
+		else right.put(newKey, newValue);
+		
+		assert has(newKey): "Key not inserted";
+	}
+	
+	/**
+	 * is searchKey in tree?
+	 * @param searchKey the key searched for
+	 * @return true if key in tree
+	 */
+
+	public boolean has(K searchKey) {
+		if (isEmpty())
+			return false;
+		else if (key.equals(searchKey))
+				return true;
+		else if (left.has(searchKey))
+			return true;
+		else return right.has(searchKey);
+	}
+	/**
+	 * retrieves value associated with key
+	 * <br><STRONG>require</STRONG> has(searchKey)
+	 * @param searchKey the key searched for
+	 * @return true when in tree
+	 */
+	public V itemAt(K searchKey) {
+		assert has(searchKey) : " Key not in tree";
+		
+		if (key.equals(searchKey)) 
+			return value;
+		else if (left.has(searchKey))
+			return left.itemAt(searchKey);
+		else 
+			return right.itemAt(searchKey);
+		
+	}
+	/**
+	 * checks whether tree is a leaf
+	 * @return true when a leaf
+	 */
+	public boolean isLeaf(){
+		return !isEmpty() && left.isEmpty() && right.isEmpty();
+	}
+	/**
+	 * returns a leaf from this tree
+	 * <br><STRONG>require</STRONG>!isEmpty()
+	 * 
+
+	 * @return a leaf of this tree
+	 */
+	public AssessmentTree<K,V> getALeaf(){
+		assert !isEmpty() : "Empty tree has no leaf";
+		
+		if (isLeaf())
+			return this;
+		else if (left.isEmpty())
+			return right.getALeaf();
+		else 
+			return left.getALeaf();
+	}
+	
+	/**
+	 * computes the height of a tree;
+	 * the distance between the root and the lowest empty tree;
+	 * height is 0 for the empty tree;
+	 * @return the height
+	 */
+	public int height(){
+		if (isEmpty())
+			return 0;
+		else {
+			int leftHeight  = left.height();
+			int rightHeight = right.height();
+			
+			if (leftHeight >= rightHeight)
+				return leftHeight + 1;
+			else 
+				return rightHeight+ 1;
+		}
+	}
+
+	/**
+	 * removes theKey from tree 
+	 * <br><STRONG>require</STRONG> has(theKey);
+	 * <br><STRONG>ensure</STRONG>  !has(theKey);
+	 * @param theKey the key removed
+	 */
+	public void remove (K theKey){
+		assert has(theKey) : "Key to remove not in tree";
+		
+		if (key.equals(theKey)) {
+			if (isLeaf())
+				emptyTree();
+			else {
+				AssessmentTree<K,V> aLeaf=getALeaf();
+				
+				set(aLeaf.key, aLeaf.value);
+				aLeaf.remove(aLeaf.key);	
+			}
+				
+		} else if (left.has(theKey))
+			left.remove(theKey);
+		else
+			right.remove(theKey);
+		
+		assert !has(theKey) :"Key not removed";
+	}
+	
+	/**
+	 * Sets key and value to new values
+	 * @param newKey the new key
+	 * @param NewValue the new value;
+	 */
+	private void set(K newKey, V newValue) {
+		key = newKey;
+		value = newValue;		
+	}
+	/**
+	 * resets this tree to the empty tree
+	 */
+	private void emptyTree() {
+		set(null, null);
+		left = null;
+		right = null;	
+	}
+	
+	/**
+	 * Prints tree in readable format
+	 * root is most right printed node;
+	 * left trees above root;
+	 * right tree below root;
+	 * only keys are printed
+	 */
+	public void prettyPrint(){
+		printTree(height());
+	}
+	
+	private void printTree(int nrOfTabs){
+		assert nrOfTabs >= 0 : "too  few spacing";
+		if (!isEmpty()){
+			left.printTree(nrOfTabs -1);
+			printTabs(nrOfTabs);
+			System.out.println(key);
+			right.printTree(nrOfTabs -1);
+			
+		}
+	}
+	private void printTabs(int nrOfTabs) {
+		for (int i = 0;i<nrOfTabs;i++)
+			System.out.print("\t");
+		
+	}
+	
+	/* VOEG HIERNA JE METHODEN TOE */
+	public int weight(){
+		int weight = 1;
+		if(!left.isEmpty()){
+			if(left.isLeaf()){
+				weight++;
+			} else {
+				weight += left.weight();
+			}
+		}
+		if(!right.isEmpty()){
+			if(right.isLeaf()){
+				weight++;
+			} else {
+				weight += right.weight();
+			}
+		}
+		
+		return weight;
+	}
+	public int nrOfLeaves(){
+		int leaves = 0;
+		if(!left.isEmpty()){
+			if(left.isLeaf()){
+				leaves++;
+			} else {
+				leaves += left.nrOfLeaves();
+			}
+		}
+		if(!right.isEmpty()){
+			if(right.isLeaf()){
+				leaves++;
+			} else {
+				leaves += right.nrOfLeaves();
+			}
+		}
+		
+		return leaves;
+	}
+
+}

@@ -1,0 +1,10 @@
+//BranchProjectTracker__/home/falco/School/Sprint2/BuilTD/.git_Falco=<?xml version\="1.0" encoding\="UTF-8"?>\n<projects branch\="Falco">\n<project>/</project>\n</projects>
+//BranchProjectTracker__/home/falco/School/Sprint2/BuilTD/.git_Falco2=<?xml version\="1.0" encoding\="UTF-8"?>\n<projects branch\="Falco2">\n<project>/</project>\n</projects>
+//BranchProjectTracker__/home/falco/School/Sprint2/BuilTD/.git_v1.4master=<?xml version\="1.0" encoding\="UTF-8"?>\n<projects branch\="v1.4master">\n<project>/</project>\n</projects>
+//BranchProjectTracker__/home/falco/School/persistent/Project/RetroApptive/.git_Falco=<?xml version\="1.0" encoding\="UTF-8"?>\n<projects branch\="Falco">\n<project>/android-client</project>\n</projects>
+//BranchProjectTracker__/home/falco/School/persistent/Project/RetroApptive/.git_master=<?xml version\="1.0" encoding\="UTF-8"?>\n<projects branch\="master">\n<project>/android-client</project>\n</projects>
+commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\n<messages>\n<message>ok</message>\n<message>alle objecten </message>\n<message>nieuwe shit</message>\n<message>torensplaatsen activity toegevoegd</message>\n<message>Merge branch &apos;v1.4master&apos; of&\#x0A;/home/falco/School/Dropbox/Speelveld/BuilTD.git into v1.4master&\#x0A;</message>\n<message>Merge branch &apos;Falco2&apos; into v1.4master&\#x0A;&\#x0A;Conflicts\:&\#x0A;&\#x09;bin/classes/nl/BuilTD/Model/GameData.class&\#x0A;</message>\n<message>OK</message>\n<message>TijdSysteem goed geimplemtenteerd en tijd zichtbaar</message>\n<message>Tijd wordt laten zien, alleen de threats lopen niet gelijk, alles moet&\#x0A;op het tijdsysteem</message>\n</messages>
+eclipse.preferences.version=1
+org.eclipse.egit.ui.internal.fetch.SimpleConfigureFetchDialog_ADVANCED_MODE=true
+resourcehistory_graph_split=500,500
+resourcehistory_rev_split=700,300

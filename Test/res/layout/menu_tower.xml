@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:columnCount="1"
+    android:columnOrderPreserved="true"
+    android:layoutMode="clipBounds"
+    android:rowCount="1" >
+
+    <ImageView
+        android:id="@+id/imageViewX3Y3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/cell" />
+
+    <ImageView
+        android:id="@+id/imageViewX3Y2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageViewX3Y3"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/cell" />
+
+    <ImageView
+        android:id="@+id/imageViewX3Y4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageViewX3Y3"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/cell" />
+
+    <ImageView
+        android:id="@+id/imageViewX4Y3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/imageViewX3Y3"
+        android:src="@drawable/cell" />
+
+    <ImageView
+        android:id="@+id/imageViewX2Y3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/imageViewX3Y3"
+        android:src="@drawable/cell" />
+
+</RelativeLayout>

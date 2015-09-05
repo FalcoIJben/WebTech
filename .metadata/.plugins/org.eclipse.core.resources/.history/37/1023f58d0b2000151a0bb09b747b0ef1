@@ -1,0 +1,13 @@
+package nl.saxion.act.opgave4;
+
+public class APL {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

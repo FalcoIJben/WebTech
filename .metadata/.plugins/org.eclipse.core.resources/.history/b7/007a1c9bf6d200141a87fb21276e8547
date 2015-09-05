@@ -1,0 +1,31 @@
+package nl.BuilTD.Controller.Tijdsysteem;
+
+import java.util.Timer;
+
+import nl.BuilTD.Model.GameData;
+
+
+public class TickTimer  {
+	
+
+
+    final private int TICKS_PER_SEC = 6;
+    public TickTask task;
+    private Timer tickTimer = new Timer();
+    private boolean pause = true;
+    
+    public TickTimer(GameData gameData){
+    	task = new TickTask(gameData);
+    }
+
+
+    public void start() {
+        tickTimer.schedule(task, 0, (1000 / TICKS_PER_SEC));
+
+    }
+
+    public void stop() {
+        tickTimer.cancel();
+    }
+
+}

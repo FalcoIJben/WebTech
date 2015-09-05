@@ -1,0 +1,64 @@
+package nl.BuilTD.Controller.Tijdsysteem;
+
+import java.util.TimerTask;
+
+import nl.BuilTD.Activities.BuilTDApplication;
+import nl.BuilTD.Model.GameData;
+
+
+public class TickTask extends TimerTask {
+    private int tick;
+    private boolean pause = false;
+    
+   
+    private GameData gameData;
+    
+    public TickTask(GameData gamedata){
+    	this.gameData = gamedata;
+    }
+    
+    
+    @Override
+    public void run() {
+        if (!pause) {
+            if (tick > 5) {
+                tick = 0;
+            }
+            checkUpdates(tick);
+            tick++;
+        }
+
+    }
+
+    private void checkUpdates(int tick) {
+
+       
+        updateTimerView();
+        
+        
+        if (tick % 3 == 0) {
+            doeShit();
+        }
+
+    }
+    private void updateTimerView(){
+    	gameData.updateTime();
+    }
+
+    private void doeShit() {
+
+    }
+
+    private void doemeershit() {
+
+    }
+
+    public void pause() {
+        pause = true;
+    }
+
+    public void unPause() {
+        pause = false;
+    }
+
+}

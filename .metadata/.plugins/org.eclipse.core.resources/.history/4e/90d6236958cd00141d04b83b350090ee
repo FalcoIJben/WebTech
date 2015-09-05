@@ -1,0 +1,116 @@
+package nl.BuilTD.Model;
+
+import java.util.ArrayList;
+
+import android.graphics.Path;
+
+import nl.BuilTD.Model.Objects.Units.Unit;
+
+
+public class Wave {
+	
+	// units values
+	
+	
+	private boolean boss;
+	private boolean flying;
+    private int waveNumber;
+    private int waveTimer;
+    private int healthPool;
+    static private int amountOfMonsters = 10;
+    private Path path;
+    
+    //balance pool (final)
+    private final double BASEVALUE = 4.3296989006;
+    private final double POWERVALUE = 0.1672224098;
+    
+    private final double BASESPEED = 5;
+    private final double SPEEDMULTIPLFLYING = 0.8;
+    private final double SPEEDMULTIPLBOSS = 0.7;
+    //end balance pool
+    
+    public Wave(int waveNumber){
+    	this.waveNumber = waveNumber;
+    	defineWave();
+    	
+    	
+    	
+    }
+
+
+    // niet definitied, hoe samenstelling van units binnen deze waves?
+    ArrayList<Unit> units = new ArrayList<Unit>();
+
+    public ArrayList<Unit> getUnitObjects() {
+        return units;
+    }
+
+    //methodes
+    
+    private int setHealthPool(){
+    	return (int) ((Math.pow(BASEVALUE, (POWERVALUE * waveNumber))) * 10 );
+    	
+    }
+    private void defineWave(){
+    	increaseAmountOfUnits();
+    	setHealthPool();
+    	flying = isFlying();
+    	boss = isBoss();
+    	
+    }
+    private Unit makeUnit(){
+    	return (new Unit(isFlying(),getUnitHealth(), getUnitSpeed(),0,path);
+    }
+    public void removeUnit(Unit unit){
+    	// komt nog
+    	
+    }
+    // calculateValues (waveNummer int ) void
+
+    // create Units
+
+    // Kill unit
+    // roep model , score, timer decrease
+
+    // removeUnit
+    // als basis bereikt
+
+    // kijkt of wavenumber een prime number is 
+    //dit gebruiken we omdat bij iedere primewave er permanent 1 extra monster gespawned gaat worden.
+    private double getUnitSpeed(){
+    	double unitSpeed = BASESPEED;
+    	if(isBoss()){
+    		unitSpeed = (unitSpeed * SPEEDMULTIPLBOSS);
+    	}
+    	if(isFlying()){
+    		unitSpeed = (unitSpeed * SPEEDMULTIPLFLYING);
+    	}
+    	return unitSpeed;
+    }
+    private int getUnitHealth(){
+    	int unitHealth = 0;
+
+    	if(isBoss()){
+    		unitHealth = healthPool;
+    	} else {
+    		unitHealth=(healthPool/amountOfMonsters);
+    	}
+    	return unitHealth;
+    }
+    private boolean isFlying(){
+    	if(waveNumber%4==0){return true;}
+    	return false;
+    }
+    private boolean isBoss(){
+    	if(waveNumber%10==0){return true;}
+    	return false;
+    }
+    private void increaseAmountOfUnits(){
+    	if (waveNumber%2==0) {return;}
+    		for (int i = 3 ; i * i <= waveNumber ; i += 2){
+    			if (waveNumber % i == 0) {return;}
+    		}
+    		amountOfMonsters++;
+    }
+
+}

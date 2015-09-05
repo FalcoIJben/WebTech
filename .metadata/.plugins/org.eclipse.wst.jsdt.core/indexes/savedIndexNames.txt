@@ -1,0 +1,7 @@
+INDEX VERSION 1.3+/home/falco/workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+520585822.index
+3314441032.index
+2877736073.index
+60012890.index
+2229206247.index
+357151108.index

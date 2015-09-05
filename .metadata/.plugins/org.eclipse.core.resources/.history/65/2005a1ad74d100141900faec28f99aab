@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" tools:context="nl.BuilTD.Activities.MainActivity">
+
+    <TextView
+        android:id="@+id/textViewWave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Wave: 0" android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
+
+    <TextView
+        android:id="@+id/textViewScore"
+         android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Score: 0" android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
+
+    <TextView
+        android:id="@+id/textViewGold"
+      android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Gold: 0" android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
+
+    <Button
+        android:id="@+id/buttonNextWave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Next Wave" />
+
+    <Button
+        android:id="@+id/buttonMenu"
+       android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Menu" />
+
+</LinearLayout>

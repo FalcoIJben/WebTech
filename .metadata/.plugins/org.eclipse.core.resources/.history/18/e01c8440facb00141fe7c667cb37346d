@@ -1,0 +1,24 @@
+package nl.BuilTD.Model.Objects.Towers;
+
+import nl.saxion.act.schoolFrameWork.model.GameBoard;
+
+public class TowerNature extends Tower{
+
+	public TowerNature(int damage, double fireRate, int price, double range) {
+		super(damage, fireRate, price, range);
+		
+	}
+
+	@Override
+	public String getImageId() {
+		
+		return "Tower_Nature1";
+	}
+
+	@Override
+	public void onTouched(GameBoard gameBoard) {
+		
+		
+	}
+
+}

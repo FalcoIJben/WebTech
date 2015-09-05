@@ -1,0 +1,61 @@
+package nl.BuilTD.Model.Objects.Towers;
+
+import nl.saxion.act.schoolFrameWork.model.GameBoard;
+import nl.saxion.act.schoolFrameWork.model.GameObject;
+
+/**
+ * Created by jonathan on 11-3-15.
+ */
+
+
+public abstract class Tower extends GameObject { 
+	
+	
+	// finals
+	private final double SELL_VALUE_FACTOR = 0.6;
+
+
+    //attributen
+	protected String imageID;
+
+    protected int damage;
+    protected double fireRate;
+    protected int price;
+    protected double range;
+    protected int towerLvl;
+    
+    
+ 
+   
+    public Tower(int damage, double fireRate, int price, double range) {
+        this.damage = damage;
+        this.fireRate = fireRate;
+        this.price = price;
+        this.range = range;
+        this.towerLvl = 1;
+    }
+
+    public int getSellValue(){
+    	return (int) (price*SELL_VALUE_FACTOR);
+    }
+    public void upgrade(){
+    	//update de stats;
+    	towerLvl++;
+    }
+
+	@Override
+	public String getImageId() {
+		int level = towerLvl;
+		if(level>4){
+			level = 5;
+		}
+		return imageID + level;
+		
+	}
+
+
+    
+    
+  
+ 
+}

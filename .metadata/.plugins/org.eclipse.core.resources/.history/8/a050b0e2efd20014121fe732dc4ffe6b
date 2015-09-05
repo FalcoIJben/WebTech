@@ -1,0 +1,86 @@
+package nl.BuilTD.Model;
+
+import nl.BuilTD.Model.Grid.GridModel;
+import nl.saxion.act.schoolFrameWork.model.GameBoard;
+
+import java.util.ArrayList;
+import java.util.Observable;
+
+/**
+ * Created by jonathan on 11-3-15.
+ * bevat alle data, via hier communiceer je met alle modellen.
+ */
+public class GameData extends Observable{
+
+
+
+
+    public final int STARTING_GOLD = 10, MAX_LIVES = 10;
+    private int gold, score, timeTillNextWave, lives;
+
+    // reference to gridmodels
+    private GameBoard gridboard;
+    private int waveTimer = 0;
+    private int timeSec = 0;
+    private int timeMin = 0;
+    // waves
+    private ArrayList<Wave> waves = new ArrayList<Wave>();
+
+    public GameData(GridModel gridModel) {
+        gold = STARTING_GOLD;
+        lives = MAX_LIVES;
+
+        gridboard = gridModel.getGameBoard();
+
+
+
+    }
+
+    public int getWaveTimer() {
+        return waveTimer;
+    }
+
+    public void setWaveTimer(int waveTimer) {
+        this.waveTimer = waveTimer;
+        //setChanged();
+
+        notifyObservers();
+    }
+
+    public GameBoard gridboard(){
+
+        return gridboard;
+
+
+    }
+
+
+    public ArrayList<Wave> getWaves() {
+        return waves;
+    }
+    public String getTimeSec(){
+    	String r = "";
+    	if (timeSec<10){
+    		r = ("0"+timeSec);
+    	} else {
+    		r = (""+timeSec);
+    	}
+    }
+    public int getTimeMin(){
+    	return timeMin;
+    }
+
+  public void updateTime(){
+	  	if(timeSec==59){
+	  		timeSec = 0;
+	  		timeMin++;
+	  	} else {
+	  		timeSec++;
+	  	}
+    	
+    	setChanged();
+    	notifyObservers();
+    }
+}
+
+

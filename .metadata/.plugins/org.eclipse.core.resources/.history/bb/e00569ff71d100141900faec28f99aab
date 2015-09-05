@@ -1,0 +1,51 @@
+package nl.BuilTD.Controller.Tijdsysteem;
+
+import java.util.TimerTask;
+
+/**
+ * Created by jonathan on 11-3-15.
+ */
+public class TickTask extends TimerTask {
+    private int tick;
+    private boolean pause = false;
+
+    @Override
+    public void run() {
+        if (!pause) {
+            if (tick > 5) {
+                tick = 0;
+            }
+            checkUpdates(tick);
+            tick++;
+        }
+
+    }
+
+    private void checkUpdates(int tick) {
+
+       
+        doemeershit();
+        
+        if (tick % 3 == 0) {
+            doeShit();
+        }
+
+    }
+
+    private void doeShit() {
+
+    }
+
+    private void doemeershit() {
+
+    }
+
+    public void pause() {
+        pause = true;
+    }
+
+    public void unPause() {
+        pause = false;
+    }
+
+}

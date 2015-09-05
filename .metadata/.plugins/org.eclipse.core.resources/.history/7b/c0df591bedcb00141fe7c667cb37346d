@@ -1,0 +1,83 @@
+package nl.BuilTD.Model.Grid;
+
+import nl.BuilTD.Activities.MainActivity;
+import nl.BuilTD.Model.Objects.Towers.SimpleTower;
+import nl.BuilTD.Model.Objects.Towers.Tower;
+import nl.BuilTD.Model.Objects.Towers.TowerEarth;
+import nl.BuilTD.Model.Objects.Towers.TowerElec;
+import nl.BuilTD.Model.Objects.Towers.TowerFire;
+import nl.BuilTD.Model.Objects.Towers.TowerFrost;
+import nl.BuilTD.Model.Objects.Towers.TowerNature;
+import nl.BuilTD.View.Game.GridboardView;
+import nl.saxion.act.schoolFrameWork.model.Game;
+import nl.saxion.act.schoolFrameWork.model.GameBoard;
+
+/**
+ * Created by jonathan on 11-3-15.
+ */
+public class GridModel extends Game {
+
+
+    private MainActivity activity;
+
+    public GridModel(MainActivity activity) {
+
+        //maak new gameboard
+        super(new Gridboard());
+
+        // reference de main activity
+        this.activity = activity;
+
+        //maak nieuw veld "game "
+        initNewGame();
+
+        // tell the game board view which game board to show ... ????
+        GridboardView gridboardView = activity.getGridboardView();
+
+        GameBoard gameBoard = getGameBoard();
+
+        gridboardView.setGameBoard(gameBoard);
+
+
+        gridboardView.setFixedGridSize(gameBoard.getWidth(), gameBoard.getHeight());
+
+
+
+
+    }
+
+// start new game
+    public void initNewGame(){
+
+        GameBoard board = super.getGameBoard();
+        board.removeAllObjects();
+
+        board.updateView();
+        
+        
+  //      board.addGameObject(new SimpleTower(0,0.1,10,1.0), 5, 3);
+  //      board.addGameObject(new SimpleTower(0,0.1,10,1.0), 5, 2);
+  //      board.addGameObject(new SimpleTower(0,0.1,10,1.0), 5, 1);
+
+       
+        board.addGameObject(new TowerNature(0,0.1,10,1.0), 1, 1);
+        board.addGameObject(new TowerEarth(0,0.1,10,1.0), 2, 2);
+        board.addGameObject(new TowerFrost(0,0.1,10,1.0), 3, 3);
+        board.addGameObject(new TowerFire(0,0.1,10,1.0), 4, 4);
+        board.addGameObject(new TowerElec(0,0.1,10,1.0), 5, 5);
+        
+        board.updateView();
+
+
+
+    }
+    public void SellTower(Tower tower) {
+    	
+    	//add gold to model:
+    	// model.addGold(tower.getSellValue());
+    	
+    	super.getGameBoard().removeObject(tower);
+    }
+
+
+}

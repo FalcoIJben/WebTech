@@ -1,0 +1,22 @@
+package nl.BuilTD.controller;
+
+import java.util.Timer;
+
+
+public class Tijdsysteem {
+	
+	private Timer tickTimer = new Timer();
+	public TickTask task = new TickTask();
+	final private int TICKS_PER_SEC = 60;
+	private boolean pause = true;
+	
+
+
+	public void start(){
+		tickTimer.schedule(task, 0, (1000/TICKS_PER_SEC));
+	}
+	public void stop(){
+		tickTimer.cancel();
+	}
+	
+}

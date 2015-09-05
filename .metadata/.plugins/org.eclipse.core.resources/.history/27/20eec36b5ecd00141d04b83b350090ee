@@ -1,0 +1,5 @@
+package nl.BuilTD.Model.Objects.Units;
+
+public class SimpleUnit {
+
+}

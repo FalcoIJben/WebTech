@@ -1,0 +1,107 @@
+package nl.BuilTD.Activities;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+
+import android.view.View;
+import android.widget.Button;
+import nl.BuilTD.Controller.Game.GameControllerHOEDAN;
+import nl.BuilTD.Model.GameData;
+import nl.BuilTD.Model.Grid.GridModel;
+import nl.BuilTD.Model.Objects.Towers.SimpleTower;
+import nl.BuilTD.View.Game.AnimationBoard.AnimationBoardSurfaceView;
+import nl.BuilTD.View.Game.GridboardView;
+import nl.BuilTD.View.Game.InformatieBalk;
+import nl.saxion.act.playground.R;
+
+/**
+ * Created by jonathan on 11-3-15.
+ */
+public class MainActivity extends Activity {
+
+
+
+    private GameData gameData;
+
+
+    private GridboardView gridboardView;
+    private InformatieBalk informatieBalk;
+    private Button buttonPauseMenu, buttonNextWave;
+
+    private AnimationBoardSurfaceView animationBoardSurfaceView;
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            // Load main.xml
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.game_screen);
+
+            // get the model
+            BuilTDApplication application = (BuilTDApplication) getApplicationContext();
+            gameData = application.getGameData();
+
+
+
+            // inflate views
+            informatieBalk = (InformatieBalk) findViewById(R.id.informatiebalk);
+            gridboardView = (GridboardView) findViewById(R.id.gridboardView);
+
+            // make the gameboardView
+            gridboardView.setGameBoard(gameData.gridboard());
+            gridboardView.setFixedGridSize(gameData.gridboard().getWidth(), gameData.gridboard().getHeight());
+
+
+            //koppel buttons
+            buttonPauseMenu = (Button) informatieBalk.findViewById(R.id.buttonMenu);
+            buttonNextWave = (Button) informatieBalk.findViewById(R.id.buttonNextWave);
+
+
+            //set Listeners voor buttons
+            buttonPauseMenu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intentPauseMenu = new Intent(MainActivity.this, MenuPauseActivity.class);
+                    startActivity(intentPauseMenu);
+                }
+            });
+
+            buttonNextWave.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					//niet de bedoeling dat het hier staat, maar zo kunnen we testen zonder het weg te commenten
+		            initNewGame();
+		        	//open het "animatieboard"
+		          	animationBoardSurfaceView = new AnimationBoardSurfaceView(MainActivity.this);
+		          	setContentView(animationBoardSurfaceView);
+				}
+			});
+
+
+
+
+        }
+
+        
+    private void initNewGame(){
+
+
+        SimpleTower simpleTower = new SimpleTower(10,10,10,10);
+
+        //update the view
+        gameData.gridboard().updateView();
+        gameData.gridboard().addGameObject(simpleTower,1,2);
+        gameData.gridboard().updateView();
+
+
+
+    }
+
+
+
+
+
+
+
+}

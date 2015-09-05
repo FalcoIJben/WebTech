@@ -1,0 +1,74 @@
+package nl.BuilTD.Model.Objects.Units;
+
+import android.graphics.Path;
+
+/**
+ * Created by jonathan on 11-3-15.
+ */
+public abstract class Unit {
+
+
+    //attributen
+	protected boolean flying;
+    protected int health;
+    protected double speed;
+    		// protected int waveNumber; niet persee nodig
+    protected double armorValue;
+    protected int baseValue;
+    protected Path path;
+    // damage = de damage die deze unit heeft opgelopen.
+    // op deze manier kunnen wee de health weergeven in bijv: een health bar / percentage
+    protected int damage;
+    
+    // atributen
+    // protected boolean slowed = false;
+    
+
+
+    // auto generated, nog niet compleet
+    public Unit(int health, double speed, double armorValue, int baseValue, Path path) {
+        this.health = health;
+        this.speed = speed;
+        this.armorValue = armorValue;
+        this.baseValue = baseValue;
+        this.path = path;
+    }
+    public int getBaseValue(){
+    	return baseValue;
+    }
+	public int getHealth() {
+		return health;
+	}
+	public double getSpeed() {
+		return speed;
+	}
+	public double getArmorValue() {
+		return armorValue;
+	}
+	public void addDamage(int damage){
+		this.damage =+ damage;
+	}
+	public int getDamage(){
+		return damage;
+	}
+
+    
+
+
+   
+
+
+
+   
+
+
+    // kortste pad berekenen
+
+        // bereken gelijk score en paas door. score aan de hand van tijd... formule
+
+
+    // kortste pad lopen van bases
+
+
+
+}

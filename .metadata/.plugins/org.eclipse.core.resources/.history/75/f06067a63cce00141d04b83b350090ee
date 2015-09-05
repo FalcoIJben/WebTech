@@ -1,0 +1,169 @@
+package nl.BuilTD.Model;
+
+import java.util.ArrayList;
+
+import android.graphics.Path;
+
+
+import nl.BuilTD.Model.Objects.Units.SimpleUnit;
+import nl.BuilTD.Model.Objects.Units.Unit;
+
+
+public class Wave {
+	
+	// units values
+	
+	
+	private boolean boss;
+	private boolean flying;
+    static private int waveNumber = 0;
+    private int waveTimer;
+    private int healthPool;
+    static private int amountOfMonsters = 10;
+    private Path path;
+    
+    //balance pool (final)
+    private final double BASEVALUE = 4.3296989006;
+    private final double POWERVALUE = 0.1672224098;
+    
+    private final double BASESPEED = 5;
+    private final double SPEEDMULTIPLFLYING = 0.8;
+    private final double SPEEDMULTIPLBOSS = 0.7;
+    //end balance pool
+    
+    public Wave(){
+    	waveNumber++;
+    	defineWave();
+    	units = makeWave();
+    	
+    	
+    	
+    }
+
+
+    // niet definitied, hoe samenstelling van units binnen deze waves?
+    ArrayList<Unit> units = new ArrayList<Unit>();
+
+    public ArrayList<Unit> getUnitObjects() {
+        return units;
+    }
+
+    //methodes
+    
+
+    /**
+     * zorgt dat alle variables overeenkomen met het WaveNumber
+     */
+    private void defineWave(){
+    	increaseAmountOfUnits();
+    	setHealthPool();
+    	flying = isFlying();
+    	boss = isBoss();
+    	
+    }
+    /**
+     * maakt een nieuwe wave
+     * @return de gemaakte wave
+     */
+    private ArrayList<Unit> makeWave(){
+    	ArrayList<Unit> wave = new ArrayList<Unit>();
+    	for(int i = 0;i < amountOfMonsters; i++){
+    		wave.add(makeUnit());
+    	}
+    	return wave;
+    }
+    /**
+     * maakt een nieuwe unit aan
+     * @return de aangemaakte unit
+     */
+    private Unit makeUnit(){
+    	// eerst bepalen welke Unit gemaakt moet worden
+    	// dan de juite Unit mken
+    	return (new SimpleUnit(isFlying(),getUnitHealth(), getUnitSpeed(), 0.0, 100, path));
+    }
+    /** wordt aangeroepen als een unit dood is of de basis bereikt
+     *  verwijdert de unit
+     * @param unit
+     */
+    public void removeUnit(Unit unit){
+    	for(int i = 0;i<units.size();i++){
+    		if(units.get(i).equals(unit)){
+    			units.remove(i);
+    		}
+    	}
+    	
+    }
+    /**wordt aangeroepen als de unit gedood is
+     * verwijdert de unit
+     * @param unit
+     */
+    public void killUnit(Unit unit){
+    	 // roep model , score, timer decrease
+    	removeUnit(unit);
+    }
+    // calculateValues (waveNummer int ) void
+
+
+   
+    /**
+     * bepaalt welke speed de Unit(s)
+     * @return de speed van de Unit(s)
+     */
+    private double getUnitSpeed(){
+    	double unitSpeed = BASESPEED;
+    	if(isBoss()){
+    		unitSpeed = (unitSpeed * SPEEDMULTIPLBOSS);
+    	}
+    	if(isFlying()){
+    		unitSpeed = (unitSpeed * SPEEDMULTIPLFLYING);
+    	}
+    	return unitSpeed;
+    }
+    /**
+     * bepaalt aan de hand van de WaveNumber en aantal Units de heatlth van 1 unit
+     * @return de health van de unit(s)
+     */
+    private int getUnitHealth(){
+    	int unitHealth = 0;
+
+    	if(isBoss()){
+    		unitHealth = healthPool;
+    	} else {
+    		unitHealth=(healthPool/amountOfMonsters);
+    	}
+    	return unitHealth;
+    }
+    /**
+     * kijkt of de huidige wave flying is, aan de hand van waveNumber
+     * @return true als de huidige wave flying is
+     */
+    private boolean isFlying(){
+    	if(waveNumber%4==0){return true;}
+    	return false;
+    }
+    /**
+     *  kijkt of de huidige wave een boss is, aan de hand van waveNumber
+     * @return true als de wave een boss is, anders false
+     */
+    private boolean isBoss(){
+    	if(waveNumber%10==0){return true;}
+    	return false;
+    }
+    /**
+     * kijkt of wavenumber een prime number is 
+     *  dit gebruiken we omdat bij iedere primewave er permanent 1 extra monster gespawned gaat worden.
+     */
+   
+    private void increaseAmountOfUnits(){
+    	if (waveNumber%2==0) {return;}
+    		for (int i = 3 ; i * i <= waveNumber ; i += 2){
+    			if (waveNumber % i == 0) {return;}
+    		}
+    		amountOfMonsters++;
+    }
+    private int setHealthPool(){
+    	return (int) ((Math.pow(BASEVALUE, (POWERVALUE * waveNumber))) * 10 );
+    	
+    }
+
+}

@@ -1,0 +1,55 @@
+package nl.BuilTD.View.Game;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.util.Log;
+
+import nl.saxion.act.playground.R;
+import nl.saxion.act.schoolFrameWork.model.Game;
+import nl.saxion.act.schoolFrameWork.view.GameBoardView;
+import nl.saxion.act.schoolFrameWork.view.SpriteCache;
+
+/**
+ * Created by jonathan on 11-3-15.
+ */
+
+
+
+public class GridboardView extends GameBoardView {
+    private Game game;
+    private static String TAG = "GridboardView";
+
+    public GridboardView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init();
+    }
+
+    public GridboardView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
+
+    //TODO
+    public void init(){
+
+
+
+
+        Log.d(TAG, "Loading all images");
+
+        SpriteCache spriteCache = SpriteCache.getInstance();
+        spriteCache.setContext(this.getContext());
+
+        // Load the 'empty' cell bitmap and tell the tile view that this is the
+        // image to use for cells without GameObject
+        spriteCache.loadTile("empty", R.drawable.cell);
+        spriteCache.loadTile("tower", R.drawable.rock2);
+        spriteCache.loadTile("Tower_Nature", R.drawable.leaf);
+        setEmptyTile("empty");
+
+
+    }
+
+
+}

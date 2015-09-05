@@ -1,0 +1,78 @@
+package nl.BuilTD.Controller.Tijdsysteem;
+
+import java.util.TimerTask;
+
+import android.os.Handler;
+
+import nl.BuilTD.Activities.BuilTDApplication;
+import nl.BuilTD.Model.GameData;
+
+
+public class TickTask extends TimerTask {
+    private int tick;
+    private boolean pause = false;
+    private final Handler myHandler = new Handler();
+	private final Runnable myRunnable = new Runnable() {
+		   public void run() {
+		     gameData.updateTime();
+		   }
+		};
+	
+    
+   
+    private GameData gameData;
+    
+    public TickTask(GameData gamedata){
+    	this.gameData = gamedata;
+    }
+    
+    
+    @Override
+    public void run() {
+        if (!pause) {
+            if (tick > 5) {
+                tick = 0;
+            }
+            
+            checkUpdates(tick);
+            tick++;
+        }
+
+    }
+
+    private void checkUpdates(int tick) {
+
+       
+        
+        if (tick%6 == 0){
+        	updateTimerView();
+        }
+        
+        if (tick % 3 == 0) {
+            doeShit();
+        }
+
+    }
+    private void updateTimerView(){
+    	myHandler.post(myRunnable);
+    }
+
+
+    private void doeShit() {
+
+    }
+
+    private void doemeershit() {
+
+    }
+
+    public void pause() {
+        pause = true;
+    }
+
+    public void unPause() {
+        pause = false;
+    }
+
+
+}

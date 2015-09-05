@@ -1,0 +1,24 @@
+package nl.BuilTD.Model.Objects.Towers;
+
+import nl.saxion.act.schoolFrameWork.model.GameBoard;
+
+public class TowerAir extends Tower{
+
+	public TowerAir(int damage, double fireRate, int price, double range) {
+		super(damage, fireRate, price, range);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String getImageId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void onTouched(GameBoard gameBoard) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
